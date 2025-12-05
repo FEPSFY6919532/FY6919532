@@ -100,7 +100,7 @@
   <h3 id="Introduction">Introduction</h3>
 
   <p class="ex1">
-  <pre>
+  <pre id="Introduction_InText">
     Social Engineering is one of the most common ways cyber attackers gain access to systems and confidential information. Rather than trying
     to break the hardware or software, social engineering relies on the manipulating people into revealing information or clicking on 
     dangerous links that give the attacker access to what they want. As communication continues to develop, through email and social media, 
@@ -116,7 +116,7 @@
   <h3 id="Types of Social Engineering Attacks">Types of Social Engineering Attacks</h3>
 
   <p class="ex1">
-  <pre>
+  <pre id="TypesofAttack_InText">
     There are many different forms of social engineering attacks, but most rely on the user being manipulated to do something that 
     will benefit the attacker. The 4 main methods are phishing, spear phishing, smishing and pretexting. 
     The most common method of attack is phishing. This is where a large number of fraudelent emails are sent out in an attempt to
@@ -166,7 +166,7 @@
   <h3 id="Impacts on Organisations">Impacts on Organisations</h3>
 
   <p class="ex1">
-  <pre>
+  <pre id="Impacts_InText">
    Social engineering attacks can target individuals, but companies can also be susceptible to these attacks, and these can have
    serious consequences for these companies. One of the immediate consequences is financial loss, which can occur through
    fraudulent payments or stolen credential. Attackers will exploit employees at a company, sending phishing emails to their
@@ -185,7 +185,7 @@
   <h3 id="Prevention Strategies">Prevention Strategies</h3>
 
   <p class="ex1">
-  <pre>
+  <pre id="Prevention_InText">
    Now we will discuss how we can reduce the risk of social engineering attacks by implementing prevention strategies.
    One such prevention stategy is user training on a regular basis at companies. This will help employees or even the general public
    to identify fraudulent emails and understand different techniques attackers can use, which will allow them to report any suspicious
@@ -207,7 +207,7 @@
   <h3 id="Conclusion">Conclusion</h3>
 
   <p class="ex1">
-  <pre>
+  <pre id="Conclusion_InText">
    Social Engineering attacks continue to rise each year as it exploits human nature rather than technical weakness.
    Methods such as phishing, smishing and pretexting remain highly effective, leading to data breaches and financial loss. That is 
    why it is very important that people and organisations must increase their awareness on the matter. Though there is no solution that 
@@ -294,6 +294,41 @@
     }
     // Initial load to display the time on page load
     window.onload = getLastUpdatedTime;
+</script>
+
+<!-- //////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////////////////////////// -->
+<!-- Placeholder for total word count -->
+<p id="totalWordCount"></p>
+<hr>
+<script>
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId, outputId) {
+    // Get the text content from the specified section
+    const text = document.getElementById(sectionId).textContent;
+    // Split text into words based on spaces and filter out any empty strings
+    const wordArray = text.trim().split(/\s+/);
+    // Count the words
+    const wordCount = wordArray.length;
+    // Return the word count for summing purposes
+    return wordCount;
+  }
+  // Function to calculate and display total word count from selected sections
+  function displayTotalWordCount() {
+    // Calculate word count for each section and accumulate the total
+    const IntroductionCount = displayWordCount("Introduction_InText");
+    const TypesofAttackCount = displayWordCount("TypesofAttack_InText");
+    const ImpactsCount = displayWordCount("Impacts_InText");
+    const PreventionCount = displayWordCount("Prevention_InText");
+    const ConclusionCount = displayWordCount("Conclusion_InText");
+    // Calculate the sum of all selected sections
+    const totalWordCount = IntroductionCount + TypesofAttackCount + ImpactsCount + PreventionCount + ConclusionCount;
+    // Display the total word count
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+  }
+  // Run the function for specific sections and display total count when the page loads
+  window.onload = displayTotalWordCount;
 </script>
     
   </body>
